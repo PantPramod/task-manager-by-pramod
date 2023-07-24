@@ -35,7 +35,7 @@ export const options: NextAuthOptions = {
                         password: credentials?.password
                     })
                     // console.log(data)
-                    return { name: credentials?.username, email: credentials?.username, image: undefined, access: data?.accesstoken }
+                    return data
                 } catch (err) {
                     return null
                 }

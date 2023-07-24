@@ -1,11 +1,6 @@
 
 import { options } from "./api/auth/[...nextauth]/options"
 import { getServerSession } from "next-auth/next"
-import UserCard from "./components/UserCard"
-import { signIn } from 'next-auth/react'
-import SignInWithSM from "./components/SignInWithGoogle"
-import SignOut from "./components/SignOut"
-import LoginForm from "./components/LoginForm"
 import NavBar from "./components/NavBar"
 import { TbFlag3Filled } from 'react-icons/tb'
 import Link from "next/link"
