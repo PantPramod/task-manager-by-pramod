@@ -42,11 +42,11 @@ const LoginForm = () => {
                 <form
                     onSubmit={submitHandler}
                     className=' w-full sm:w-[400px]   rounded-3xl  flex flex-col items-center gap-y-4'>
-                    <div className='text-[#f3ecec] text-center py-2 text-xl uppercase font-semibold '>Login Form</div>
+                    <div className='text-[#f3ecec] text-center py-2 text-xl uppercase font-semibold '>Login </div>
                     {error &&
                         <p className='text-xs text-white  text-center w-full py-2 px-2 bg-red-700 rounded-md'>{error}</p>
                     }
-                    <input
+                    {/* <input
                         type='text'
                         className='border bg-transparent rounded-md p-2 w-full text-white'
                         placeholder='Email Address '
@@ -67,15 +67,15 @@ const LoginForm = () => {
                         className="text-white border w-full p-2 rounded-md mt-5"
                     >
                         Login
-                    </button>
+                    </button> */}
 
-                    <Link href="/register" className=' text-blue-600'>Create an account</Link>
-                    <div className='relative w-full my-6'>
+                    {/* <Link href="/register" className=' text-blue-600'>Create an account</Link> */}
+                    {/* <div className='relative w-full my-6'>
                         <div className='border-bottom border w-full'>
 
                         </div>
                         <p className='text-white bg-[#0c0909] absolute top-1/2 left-1/2 px-2 -translate-x-1/2 -translate-y-1/2'>OR</p>
-                    </div>
+                    </div> */}
 
                     <button
                         type='button'
