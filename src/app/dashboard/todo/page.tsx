@@ -181,7 +181,7 @@ const Dashboard = () => {
                 <textarea
                     value={data.description}
                     onChange={(e) => setData({ ...data, description: e.target.value })}
-                    className='mt-1 rounded-md border border-gray-500 px-2 py-2 bg-transparent w-full h-[100px]'></textarea>
+                    className='mt-1 outline-none rounded-md border border-gray-500 px-2 py-2 bg-transparent w-full min-h-[100px]'></textarea>
 
                 <label className='mt-4 inline-block'>Due Date</label>
 
@@ -194,7 +194,7 @@ const Dashboard = () => {
 
             </TaskPopUp>
 
-            <TaskPopUp show={showDelete} setShow={setShowDelete} background='black' className='p-4 min-w-[500px]  relative'>
+            <TaskPopUp show={showDelete} setShow={setShowDelete} background='black' className='p-4 min-w-[90%] sm:min-w-[500px]  relative'>
                 <p className='text-white'>Are you sure to delete this item</p>
                 <div className=' flex justify-between w-full gap-x-8 mt-20'>
                     <button
