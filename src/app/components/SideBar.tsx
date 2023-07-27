@@ -22,6 +22,12 @@ const SideBar = ({ show, setShow }: propType) => {
                     <BiSolidInbox className='inline mr-2' size={20} />
                     Inbox</li>
             </Link>
+            <Link href="/dashboard/today">
+                <li className={` ${pathname === "/dashboard/today" ? "bg-gray-300 text-black" : ""} p-3 hover:bg-gray-300 transition-all ease-in-out duration-300 hover:text-black cursor-pointer`}>
+                    <span className='text-[green] border border-[green] mr-2 p-[2px] text-xs rounded-sm font-bold'>{new Date().getDate()}</span>
+                    Today
+                </li>
+            </Link>
             <Link href="/dashboard/todo">
                 <li className={` ${pathname === "/dashboard/todo" ? "bg-gray-300 text-black" : ""} p-3 hover:bg-gray-300 transition-all ease-in-out duration-300 hover:text-black cursor-pointer`}>
                     <FcTodoList className='inline mr-2' size={20} />
