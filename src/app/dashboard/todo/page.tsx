@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import CreateButton from '../../components/CreateButton'
 import TaskPopUp from '../../components/TaskPopUp'
 import { FaPaperPlane } from 'react-icons/fa'
@@ -12,6 +12,7 @@ import { BsFillMenuButtonWideFill } from 'react-icons/bs'
 import NavBar from '../../components/NavBar'
 import { useSession } from 'next-auth/react'
 import SideBar from '../../components/SideBar'
+import { ThemeContext } from '@/app/layout'
 
 const Dashboard = () => {
     const { data: session } = useSession()
@@ -31,6 +32,7 @@ const Dashboard = () => {
 
     const [allTasks, setAllTasks] = useState<any>([])
     const [showMenu, setShowMenu] = useState(false)
+    const {isDarkMode } = useContext(ThemeContext)
     useEffect(() => {
         setAllTasks(JSON.parse(localStorage.getItem('tasks') || "[]"))
     }, [])
@@ -83,7 +85,7 @@ const Dashboard = () => {
     }, [allTasks])
 
     return (
-        <div className=''>
+        <div className={`${isDarkMode?"bg-black":"bg-white "} min-h-screen`}>
             <div className='sm:hidden bg-gray-800 p-4'>
                 <BsFillMenuButtonWideFill
                     size={25}
@@ -118,7 +120,7 @@ const Dashboard = () => {
                         key={task?.id}
                         value={task}
 
-                        className=" cursor-pointer  bg-black text-white  mt-5  rounded-xl  p-4 w-full max-w-[400px]">
+                        className={` cursor-pointer ${isDarkMode?"bg-[#250808d2] text-white":"bg-gray-200"}    mt-5  rounded-xl  p-4 w-full max-w-[400px]`}>
                         <div className="flex justify-between">
                             <p className=" font-semibold">{task?.title}</p>
                             <div>
@@ -145,7 +147,7 @@ const Dashboard = () => {
                 </Reorder.Group>
             </div>
             <TaskPopUp
-                setShow={setShow} show={show} className='bg-[#061325] w-[500px] p-4 text-white shadow-lg shadow-black'>
+                setShow={setShow} show={show} className={`${isDarkMode?"bg-[#061325] text-white":"bg-white "}  w-[500px] p-4  shadow-lg shadow-black`}>
                 <label>Task</label>
                 <div className='border border-gray-500 flex items-center px-2 py-2 rounded-md'>
                     <input
@@ -194,8 +196,8 @@ const Dashboard = () => {
 
             </TaskPopUp>
 
-            <TaskPopUp show={showDelete} setShow={setShowDelete} background='black' className='p-4 min-w-[90%] sm:min-w-[500px]  relative'>
-                <p className='text-white'>Are you sure to delete this item</p>
+            <TaskPopUp show={showDelete} setShow={setShowDelete} background='black' className={`p-4 min-w-[90%] sm:min-w-[500px]  relative ${isDarkMode?"bg-black text-white":"bg-white text-black"}`}>
+                <p className=''>Are you sure to delete this item</p>
                 <div className=' flex justify-between w-full gap-x-8 mt-20'>
                     <button
                         onClick={deleteHandler}

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import CreateButton from '../components/CreateButton'
 import TaskPopUp from '../components/TaskPopUp'
 import { FaPaperPlane } from 'react-icons/fa'
@@ -14,8 +14,10 @@ import { useSession } from 'next-auth/react'
 import SideBar from '../components/SideBar'
 import { IoMdAdd } from 'react-icons/io'
 import Button from '../components/Button'
+import { ThemeContext } from '../layout'
 
 const Dashboard = () => {
+  const {isDarkMode, setIsDarkMode} = useContext(ThemeContext)
   const { data: session } = useSession()
   const [show, setShow] = useState(false)
   const today = new Date();
@@ -113,7 +115,7 @@ const Dashboard = () => {
   }
 
   return (
-    <>
+    <div className={` ${isDarkMode?"bg-[#140931]":"bg-gray-50"} min-h-screen`}>
       <div className='sm:hidden bg-gray-800 p-4'>
         <BsFillMenuButtonWideFill
           size={25}
@@ -143,14 +145,14 @@ const Dashboard = () => {
           } 
         `}
         </style>
-        <h2 className='text-white font-bold text-xl'>Inbox</h2>
+        <h2 className={` ${isDarkMode?"text-white ":"text-black"}  font-bold text-xl`}>Inbox</h2>
 
         <Reorder.Group axis="y" values={allTasks} onReorder={setAllTasks}>
           {allTasks.map((task: any, index: number) => <Reorder.Item
             key={task?.id}
             value={task}
 
-            className=" cursor-pointer  bg-[#131010] text-white  mt-5  rounded-xl  p-4 w-full ">
+            className={` ${isDarkMode?"bg-[#131010] text-white":"bg-gray-300 text-black"} cursor-pointer     mt-5  rounded-xl  p-4 w-full `}>
             <div className="flex justify-between">
               <p className=" font-semibold">{task?.title}</p>
               <div>
@@ -180,7 +182,7 @@ const Dashboard = () => {
           !showAddTaskBox ?
             <p
               onClick={addTaskHandler}
-              className='addtask flex gap-x-4 items-center cursor-pointer mt-4 text-white'>
+              className={`addtask flex gap-x-4 items-center cursor-pointer mt-4 ${isDarkMode?"text-white":"text-black"} `}>
               <span className=' transition-all ease-in-out duration-300 circle w-4 h-4 rounded-full  flex justify-center leading-[100%] items-center'>
                 <IoMdAdd />
               </span>
@@ -191,14 +193,14 @@ const Dashboard = () => {
               <input
                 type='text'
                 placeholder='Task name'
-                className='bg-transparent text-white block outline-none w-full text-[14px]'
+                className={`bg-transparent ${isDarkMode&&"text-white"}  block outline-none w-full text-[14px]`}
                 value={data.title}
                 onChange={(e) => setData({ ...data, title: e.target.value })}
               />
               <textarea
                 value={data.description}
                 onChange={(e) => { setValue(e.target.value); setData({ ...data, description: e.target.value }) }}
-                className='bg-transparent text-white block outline-none w-full text-xs my-4'
+                className={`bg-transparent ${isDarkMode&&"text-white"} block outline-none w-full text-xs my-4`}
                 rows={rows}
                 placeholder='description'>
 
@@ -453,7 +455,7 @@ const Dashboard = () => {
       </TaskPopUp>
     </div> */}
       </div>
-    </>
+    </div>
   )
 }
 

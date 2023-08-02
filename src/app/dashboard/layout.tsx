@@ -26,7 +26,7 @@ export default async function RootLayout({
             <div className='w-[300px] h-[calc(100vh-56px)] hidden sm:block'>
                 <SideBar />
             </div>
-            <div className='w-full h-[calc(100vh-56px)] overflow-y-auto bg-[#140931]'>
+            <div className='w-full h-[calc(100vh-56px)] overflow-y-auto '>
                 
                 {children}
             </div>
